@@ -3,7 +3,8 @@ sites/*/settings*.php
 !sites/default/settings.php
 
 # Ignore paths that contain user-generated content.
-sites/*/files
+sites/*/files/*
+!sites/default/files/.htaccess
 sites/*/private
 .elasticbeanstalk/
 
