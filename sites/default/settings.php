@@ -221,7 +221,7 @@ $databases['default']['default'] = array(
     'prefix' => '',
 );
 
-$databases['default']['slave'] = array(
+$databases['default']['slave'][] = array(
     'driver' => 'mysql',
     'database' => $_SERVER['RDS_DB_NAME'],
     'username' => $_SERVER['RDS_USERNAME'],
