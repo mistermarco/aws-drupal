@@ -579,3 +579,11 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+
+$conf['memcache_servers'] = array(
+  'aws-drupal-cache.bwj8aa.cfg.usw2.cache.amazonaws.com:11211' => 'default',
+);
+
+$conf['memcache_bins'] = array(
+  'cache' => 'default',
+);
