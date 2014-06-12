@@ -221,6 +221,15 @@ $databases['default']['default'] = array(
     'prefix' => '',
 );
 
+$databases['default']['slave'] = array(
+    'driver' => 'mysql',
+    'database' => $_SERVER['RDS_DB_NAME'],
+    'username' => $_SERVER['RDS_USERNAME'],
+    'password' => $_SERVER['RDS_PASSWORD'],
+    'host' => 'readonlyreplicat.cabl2swdkpps.us-west-2.rds.amazonaws.com',
+    'prefix' => '',
+);
+
 /**
  * Access control for update.php script.
  *
