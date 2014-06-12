@@ -580,6 +580,12 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['allow_authorize_operations'] = FALSE;
 
+$conf['cache_backends'][] = 'sites/all/modules/memcache/memcache.inc';
+// The 'cache_form' bin must be assigned no non-volatile storage.
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+$conf['cache_default_class'] = 'MemCacheDrupal';
+$conf['memcache_key_prefix'] = 'aws_cache';
+
 $conf['memcache_servers'] = array(
   'aws-drupal-cache.bwj8aa.cfg.usw2.cache.amazonaws.com:11211' => 'default',
 );
