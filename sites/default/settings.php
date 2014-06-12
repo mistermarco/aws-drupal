@@ -234,7 +234,7 @@ $databases['default']['autoslave'] = array (
   'prefix' => '',
 );
 // Use locking that supports force master
-$conf['lock_inc'] = 'sites/all/modules/autoslave/memcache-lock.inc';
+//$conf['lock_inc'] = 'sites/all/modules/autoslave/memcache-lock.inc';
 // Use AutoSlave transactional safe cache wrapper with a memcache backend
 //$conf['cache_backends'][] = 'sites/all/modules/autoslave/autoslave.cache.inc';
 //$conf['cache_default_class'] = 'AutoslaveCache';
