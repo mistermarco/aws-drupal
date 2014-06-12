@@ -212,23 +212,33 @@
  */
 $databases = array();
 
-$databases['default']['default'] = array(
-    'driver' => 'mysql',
-    'database' => $_SERVER['RDS_DB_NAME'],
-    'username' => $_SERVER['RDS_USERNAME'],
-    'password' => $_SERVER['RDS_PASSWORD'],
-    'host' => $_SERVER['RDS_HOSTNAME'],
-    'prefix' => '',
+$databases['default']['default'] = array (
+  'driver' => 'autoslave',
 );
-
-$databases['default']['slave'][] = array(
-    'driver' => 'mysql',
-    'database' => $_SERVER['RDS_DB_NAME'],
-    'username' => $_SERVER['RDS_USERNAME'],
-    'password' => $_SERVER['RDS_PASSWORD'],
-    'host' => 'readonlyreplicat.cabl2swdkpps.us-west-2.rds.amazonaws.com',
-    'prefix' => '',
+$databases['default']['master'] = array (
+  'database' => $_SERVER['RDS_DB_NAME'],
+  'username' => $_SERVER['RDS_USERNAME'],
+  'password' => $_SERVER['RDS_PASSWORD'],
+  'host' => $_SERVER['RDS_HOSTNAME'],
+  'port' => '',
+  'driver' => 'mysql',
+  'prefix' => '',
 );
+$databases['default']['autoslave'] = array (
+  'database' => $_SERVER['RDS_DB_NAME'],
+  'username' => $_SERVER['RDS_USERNAME'],
+  'password' => $_SERVER['RDS_PASSWORD'],
+  'host' => 'readonlyreplicat.cabl2swdkpps.us-west-2.rds.amazonaws.com',
+  'port' => '',
+  'driver' => 'mysql',
+  'prefix' => '',
+);
+// Use locking that supports force master
+$conf['lock_inc'] = 'sites/all/modules/autoslave/memcache-lock.inc';
+// Use AutoSlave transactional safe cache wrapper with a memcache backend
+$conf['cache_backends'][] = 'sites/all/modules/autoslave/autoslave.cache.inc';
+$conf['cache_default_class'] = 'AutoslaveCache';
+$conf['autoslave_cache_default_class'] = 'MemCacheDrupal';
 
 /**
  * Access control for update.php script.
